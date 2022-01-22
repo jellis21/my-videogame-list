@@ -8,19 +8,8 @@ module.exports = {
       "host": process.env.DEV_DB_HOST,
       "dialect": "postgres"
     },
-    "test": {
-      "username": "BabyJoshie",
-      "password": null,
-      "database": "my_videogame_list_test",
-      "host": "127.0.0.1",
-      "dialect": "postgres"
-    },
     "production": {
-      "username": "BabyJoshie",
-      "password": null,
-      "database": "my_videogame_list_production",
-      "host": "127.0.0.1",
-      "dialect": "postgres"
+      "use_env_variable": "DATABASE_URL"
     }
 }
 
