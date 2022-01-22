@@ -12,10 +12,6 @@ app.get("/", (req, res) => {
   res.send("landing");
 });
 
-// app.get("/search", (req, res) => {
-//   res.send("search");
-// });
-
 app.get("/search", (req, res) => {
   const body = `fields id, name, summary; search "destiny 2"; where version_parent = null;`;
 
@@ -32,20 +28,6 @@ app.get("/search", (req, res) => {
 
   res.send("search")
 
-  // fetch("https://api.igdb.com/v4/games", {
-  //   method: POST,
-  //   headers: {
-  //     "Client-ID": "7gs9e0vhvxm1rc38a3323otdgw0g5w",
-  //     Authorization: "Bearer ow0rr6woggladhfhtur83pfrilx8y5",
-  //   },
-  //   body: `fields id, name, summary; search "destiny 2"; where version_parent = null;`,
-  // })
-  //   .then((response) => {
-  //     response.json();
-  //   })
-  //   .then((data) => {
-  //     res.send(data);
-  //   });
 });
 
 server.listen(port, hostname, () => {
