@@ -1,19 +1,19 @@
+require("dotenv").config();
 const cookieParser = require('cookie-parser');
 const express = require("express");
-require("dotenv").config();
 const fetch = require("node-fetch");
 const http = require("http");
 const logger = require('morgan');
 const path = require('path');
 
-// const indexRouter = require("./routes/index");
+/* Import routes */
+const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const listsRouter = require("./routes/lists");
 
 const app = express();
-
-const hostname = "127.0.0.1";
-const port = 3000;
-
+const hostname = process.env.HOSTNAME;
+const port = process.env.PORT;
 const server = http.createServer(app);
 
 /* Middleware */
@@ -23,13 +23,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* Routes */
-// app.use("/", indexRouter);
+app.use("/", indexRouter);
 app.use("/api/v1/users", usersRouter);
-
-app.get("/", (req, res) => {
-  res.send("landing");
-});
+app.use("/api/v1/lists", listsRouter);
 
 app.get("/search", (req, res) => {
   const body = `fields id, name, summary; search "destiny 2"; where version_parent = null;`;
@@ -50,5 +46,5 @@ app.get("/search", (req, res) => {
 
 
 server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running`);
 });

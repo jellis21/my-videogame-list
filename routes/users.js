@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
 const express = require("express");
+const jwt = require('jsonwebtoken');
 const models = require("../models");
 const router = express.Router();
-const Sequelize = require("sequelize");
 
 /* POST /api/v1/users/register */
 router.post("/register", function (req, res, next) {
@@ -78,11 +78,10 @@ router.post("/login", (req, res, next) => {
         res.status(400).json({ error: "password incorrect" });
         return;
       }
-      // log the user in
-      // JWT - JSON Web Tokens
-
+      // log the user in with JSON web token
+      const token = jwt.sign(user.get({ plain: true }), process.env.JWT_SECRET)
       // send success response
-      res.json({ success: "logged in" });
+      res.json({ success: "logged in", token });
     });
   });
 });
