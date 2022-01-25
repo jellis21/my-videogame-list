@@ -13,8 +13,8 @@ const Login = () => {
     e.preventDefault()
     axios.post("/api/v1/users/login", { username, password }) // axios retursn the "data" key we're accessing
       .then(res => {
-        navigate("/lists");
         window.localStorage.setItem('token', res.data.token)
+        navigate("/lists");
       })
       .catch(err => {
         alert(err.response.data.error)
