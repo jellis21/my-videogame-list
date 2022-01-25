@@ -5,13 +5,12 @@ const checkAuth = require("../checkAuth");
 
 // GET /api/v1/lists/
 router.get("/", checkAuth, (req, res) => {
-  models.List.findAll({ where: { UserId: req.user.id } })
-    .then((games) => {
-      if (games.length === 0) {
-        res.status(400).json({ error: "there are no games in your list" });
-        return;
-      }
-      res.json(games)
+  models.List.findAll({ where: { UserId: req.user.id } }).then((games) => {
+    if (games.length === 0) {
+      res.status(400).json({ error: "there are no games in your list" });
+      return;
+    }
+    res.json(games);
   });
 });
 
@@ -29,8 +28,14 @@ router.delete("/:id", checkAuth, (req, res) => {
       res.status(404).json({ error: "couldn't find that game in your list" });
       return;
     }
-    // if successful, send message
-    res.json({ success: "game deleted successfully" });
+    // once game deleted, send updated list as the response
+    models.List.findAll({ where: { UserId: req.user.id } }).then((games) => {
+      if (games.length === 0) {
+        res.status(400).json({ error: "there are no games in your list" });
+        return;
+      }
+      res.json(games);
+    });
   });
 });
 
