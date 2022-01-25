@@ -88,15 +88,5 @@ router.post("/login", (req, res, next) => {
   });
 });
 
-/* GET /api/v1/users/ (for navbar welcome message) */
-// router.get("/welcome", checkAuth, (req, res) => {
-//   models.User.findOne({ where: { UserId: req.user.id } }).then((user) => {
-//     if (!user) {
-//       res.status(400).json({ error: "unable to locate username" });
-//       return;
-//     }
-//     res.json(user.username);
-//   });
-// });
 
 module.exports = router;

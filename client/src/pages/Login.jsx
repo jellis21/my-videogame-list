@@ -14,6 +14,7 @@ const Login = () => {
     axios.post("/api/v1/users/login", { username, password }) // axios retursn the "data" key we're accessing
       .then(res => {
         window.localStorage.setItem('token', res.data.token)
+        window.localStorage.setItem('username', username)
         navigate("/lists");
       })
       .catch(err => {

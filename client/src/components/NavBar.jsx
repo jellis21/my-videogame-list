@@ -11,36 +11,27 @@ function NavBar() {
   const [user, setUser] = useState('');
 
   const token = localStorage.getItem('token');
+  const username = localStorage.getItem('username');
   const isLoggedIn = token ? true : false;
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
     navigate("/")
     // window.location.reload();
   }
-  // generate welcome message
-  // useEffect(() => {
-  //   axios.get('/api/v1/users/welcome', {
-  //     headers: {
-  //       "x-access-token": token,
-  //     }
-  //   })
-  //   .then((res) => {
-  //     setUser('hello')
-  //   })
-  //   .catch(err => {alert(err)})
-  // }, [token])
 
-  // useEffect(() => {
-  //   navigate("/")
-  // }, [navigate])
+  // generate welcome message
+  useEffect(() => {
+    setUser(username)
+  }, [username])
 
   return <nav>
 
 <Navbar bg="warning" variant="light" expand="md">
   <Container>
     <Navbar.Brand href="#home">My Videogame List</Navbar.Brand>
-    { isLoggedIn ? <Navbar.Text> Welcome, {user}! </Navbar.Text> : <Navbar.Text></Navbar.Text>}
+    { isLoggedIn ? <Navbar.Text> Welcome, {user} </Navbar.Text> : <Navbar.Text></Navbar.Text>}
     
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
