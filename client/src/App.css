@@ -1,3 +1,30 @@
+/* General */
+
+ul {
+  list-style-type: none;
+}
+
+/* App.js */
+.App {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+main {
+  flex-grow: 1;
+  max-width: 960px;
+  min-width: 540px;
+  background-color: #fff;
+}
+
+/* Home.jsx */
+.home__search-button {
+  margin-left: 20px;
+}
+
+/* NavBar.jsx */
 .nav-button {
   font-size: 100%;
   font-family: inherit;
@@ -7,9 +34,14 @@
   text-decoration: underline;
   text-align: left;
 }
-
 .nav-margin {
   margin-right: 10px;
+}
+.nav-color {
+  color: black;
+}
+.nav-color:hover {
+  color: orangered;
 }
 
 /* body {
@@ -17,6 +49,23 @@
   max-height: 100vh;
 } */
 
+/* Lists.jsx */
 .list-figure {
   height: 600px;
 }
+
+/* Footer.jsx */
+.footer__center {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  /* margin: 0 auto; */
+}
+.footer__center__social-links {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+}
+

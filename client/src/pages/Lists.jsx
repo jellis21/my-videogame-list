@@ -47,7 +47,7 @@ function Lists() {
 
   return (
     <div>
-      <h1>My List</h1>
+      <h1 className="display-1 text-center mt-3">My List</h1>
       {lists && lists.length === 0 && (
         <Figure className="d-flex flex-column justify-content-center align-items-center list-figure">
         <Figure.Image
