@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
+import Figure from 'react-bootstrap/Figure';
 
 function Lists() {
   const [lists, setLists] = useState([]);
@@ -40,10 +41,26 @@ function Lists() {
     navigate("/login");
   }
 
+  const goHome = () => {
+    navigate("/")
+  }
+
   return (
     <div>
       <h1>My List</h1>
-
+      {lists && lists.length === 0 && (
+        <Figure className="d-flex flex-column justify-content-center align-items-center list-figure">
+        <Figure.Image
+          width={200}
+          height={200}
+          alt="game over"
+          src="../game-over.jpg"
+        />
+        <Figure.Caption>
+          <button onClick={goHome} className="btn btn-primary">Add some games!</button>
+        </Figure.Caption>
+      </Figure>
+      )}
       <ListGroup as="ul">
         {lists.map((game) => (
           <ListGroup.Item

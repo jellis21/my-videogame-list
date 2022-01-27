@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -12,6 +12,7 @@ const Home = () => {
   const [gameName, setGameName] = useState("");
   const [ranking, setRanking] = useState("");
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
 
@@ -34,6 +35,10 @@ const Home = () => {
 
   // Add game to db pt. 1
   const addGameStart = (e) => {
+    if (!token) {
+      navigate("/login");
+      return;
+    }
     handleShow()
     setGameName(e.target.id)
     console.log(gameName)
@@ -84,7 +89,7 @@ const Home = () => {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </Card.Text>
-                <Button onClick={addGameStart} id={result.name} variant="primary">Go somewhere</Button>
+                <Button onClick={addGameStart} id={result.name} variant="primary">Add game</Button>
               </Card.Body>
             </Card>
           </li>
