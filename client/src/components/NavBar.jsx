@@ -28,7 +28,7 @@ function NavBar() {
 
   return <nav>
 
-<Navbar bg="warning" variant="light" expand="md">
+<Navbar fixed="top" variant="dark" expand="md">
   <Container>
     <Navbar.Brand href="#home">My Videogame List</Navbar.Brand>
     { isLoggedIn ? <Navbar.Text> Hi, {user} </Navbar.Text> : <Navbar.Text></Navbar.Text>}

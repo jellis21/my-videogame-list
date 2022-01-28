@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-warning">
+    <footer className="text-light">
       <div className="footer__center">
         <div>Joshua Ellis</div>
           <div className="footer__center__social-links d-inline-flex">

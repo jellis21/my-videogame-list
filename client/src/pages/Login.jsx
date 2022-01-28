@@ -10,20 +10,27 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    axios.post("/api/v1/users/login", { username, password }) // axios retursn the "data" key we're accessing
-      .then(res => {
-        window.localStorage.setItem('token', res.data.token)
-        window.localStorage.setItem('username', username)
+    e.preventDefault();
+    axios
+      .post("/api/v1/users/login", { username, password }) // axios retursn the "data" key we're accessing
+      .then((res) => {
+        window.localStorage.setItem("token", res.data.token);
+        window.localStorage.setItem("username", username);
         navigate("/lists");
       })
-      .catch(err => {
-        alert(err.response.data.error)
-      })
+      .catch((err) => {
+        alert(err.response.data.error);
+      });
   };
 
   return (
     <div>
+      <div className="home__header">
+        <div className="home__header--line"> </div>
+        <h1 className="display-3 text-center mt-5 mb-3">Login</h1>
+      </div>
+      <div className="login-form__wrapper">
+      <div className="login-form d-flex flex-column align-items-center">
       <h1>Login</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <p>
@@ -48,8 +55,12 @@ const Login = () => {
             required
           />
         </p>
-        <button type="submit">Login</button>
+        <button className="btn btn-secondary" type="submit">
+          Login
+        </button>
       </form>
+      </div>
+      </div>
     </div>
   );
 };

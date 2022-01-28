@@ -47,7 +47,10 @@ function Lists() {
 
   return (
     <div>
-      <h1 className="display-1 text-center mt-3">My List</h1>
+      <div className="home__header">
+      <div className="home__header--line"> </div>
+      <h1 className="display-3 mt-5 pt-3 text-center">My List</h1>
+      </div>
       {lists && lists.length === 0 && (
         <Figure className="d-flex flex-column justify-content-center align-items-center list-figure">
         <Figure.Image
@@ -61,7 +64,7 @@ function Lists() {
         </Figure.Caption>
       </Figure>
       )}
-      <ListGroup as="ul">
+      <ListGroup className="my-list mx-auto" as="ul">
         {lists.map((game) => (
           <ListGroup.Item
             as="li"
@@ -70,9 +73,9 @@ function Lists() {
           >
             <div className="ms-2 me-auto">
               <div className="fw-bold">{game.game_name}</div>
-              placeholder <form><button onClick={deleteGame} className="btn btn-primary" id={game.id}>Remove</button></form>
+               <form><button onClick={deleteGame} className="btn btn-secondary" id={game.id}>Remove</button></form>
             </div>
-            <Badge variant="primary" pill>
+            <Badge bg="secondary" variant="primary" pill>
               {game.ranking}
             </Badge>
           </ListGroup.Item>

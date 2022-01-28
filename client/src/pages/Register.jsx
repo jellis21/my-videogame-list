@@ -10,20 +10,30 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    axios.post("/api/v1/users/register", { email, username, password })
-      .then(res => {
-        alert("Registered Successfully")
+    e.preventDefault();
+    axios
+      .post("/api/v1/users/register", { email, username, password })
+      .then((res) => {
+        alert("Registered Successfully");
         navigate("/login");
       })
-      .catch(err => {
-        alert(err.response.data.error)
-      })
+      .catch((err) => {
+        alert(err.response.data.error);
+      });
   };
 
   return (
     <div>
-      <h1>Register</h1>
+      <div className="home__header">
+        <div className="home__header--line"> </div>
+        <h1 className="display-3 text-center mt-5 mb-3">Sign Up</h1>
+      <p className="text-center">
+        Join MyVideoGameList to catalog your video games, compare with other
+        users, create your own profile, and plenty more.
+      </p>
+      </div>
+      <div className="register-form d-flex flex-column align-items-center">
+      <h1>Sign up with email:</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <p>
           <label htmlFor="email">Email</label>
@@ -58,8 +68,10 @@ const Register = () => {
             required
           />
         </p>
-        <button type="submit">Register</button>
+        <button className="btn btn-secondary" type="submit">Register</button>
+        <img src="../charizard.gif" alt="charizard blasting the register button" style={{height: "57px", width: "125px"}} />
       </form>
+      </div>
     </div>
   );
 };

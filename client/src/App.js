@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <main className="mx-auto">
+      <main className="">
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path="/register" element={<Register />} />

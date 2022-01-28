@@ -65,14 +65,17 @@ const Home = () => {
 
   return (
     <div>
-      <div className="mx-2">
-      <h1 className="display-1 text-center my-3">My Videogame List</h1>
-      <h3 className="text-center">What have you watched?</h3>
+      <div className=""> {/* mx-2 */}
+        <div className="home__header">
+          <div className="home__header--line"> </div>
+      <h1 className="display-1 text-center mt-5 mb-3">My Videogame List</h1>
+      <h3 className="text-center">What have you played?</h3>
       <p className="text-center">
         Create your personalized list from thousands of titles from the
         IGDB database.
       </p>
-      <form className="d-flex justify-content-center mb-5" onSubmit={(e) => handleSearch(e)}>
+        </div>
+      <form className="d-flex justify-content-center my-5" onSubmit={(e) => handleSearch(e)}>
         <input
           onChange={(e) => {
             setSearchValue(e.target.value);
@@ -81,11 +84,11 @@ const Home = () => {
           value={searchValue}
           required
         />
-        <button className="btn btn-primary home__search-button" type="submit">
+        <button className="btn btn-secondary home__search-button" type="submit">
           Search
         </button>
       </form>
-      <ul className="d-md-flex flex-md-wrap justify-content-md-around">
+      <ul className="home__search-results d-sm-flex flex-sm-wrap justify-content-sm-around mx-auto">
         {searchResults.map((result) => (
           <li key={result.id}>
             <Card className="mb-5 mx-auto" style={{ width: "18rem" }}>
@@ -99,7 +102,7 @@ const Home = () => {
                 <Button
                   onClick={addGameStart}
                   id={result.name}
-                  variant="primary"
+                  variant="secondary"
                 >
                   Add game
                 </Button>
@@ -110,7 +113,7 @@ const Home = () => {
       </ul>
 
       <>
-        <Modal show={show} onHide={handleClose}>
+        <Modal className="mt-5" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Add game</Modal.Title>
           </Modal.Header>
