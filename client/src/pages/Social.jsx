@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
-import Figure from "react-bootstrap/Figure";
 
 function Social() {
   const [searchValue, setSearchValue] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [lists, setLists] = useState([]);
+
   const token = localStorage.getItem("token");
   
 
@@ -31,7 +31,7 @@ function Social() {
             headers: {
               "x-access-token": token,
             }
-          }).then((response) => {console.log(response)})
+          }).then((response) => {setLists(response.data)})
         })
         .catch((err) => {
           alert(err);
@@ -60,6 +60,23 @@ function Social() {
           Search
         </button>
       </form>
+
+      <ListGroup className="my-list mx-auto" as="ul">
+        {lists.map((game) => (
+          <ListGroup.Item
+            as="li"
+            className="d-flex justify-content-between align-items-start"
+            key={game.id}
+          >
+            <div className="ms-2 me-auto">
+              <div className="fw-bold">{game.game_name}</div>
+            </div>
+            <Badge bg="secondary" variant="primary" pill>
+              {game.ranking}
+            </Badge>
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
 
     </div>
   );

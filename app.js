@@ -49,6 +49,9 @@ app.get("/search", (req, res) => {
   res.send("search");
 });
 
+app.get('*', (req,res)=> {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'))
+})
 
 server.listen(port, hostname, () => {
   console.log(`Server running`);

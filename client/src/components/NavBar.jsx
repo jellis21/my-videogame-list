@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 function NavBar() {
   const [user, setUser] = useState('');
