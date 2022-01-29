@@ -65,96 +65,105 @@ const Home = () => {
 
   return (
     <div>
-      <div className=""> {/* mx-2 */}
+      <div className="">
+        {" "}
+        {/* mx-2 */}
         <div className="home__header">
           <div className="home__header--line"> </div>
-      <h1 className="display-1 text-center mt-5 mb-3">My Videogame List</h1>
-      <h3 className="text-center">What have you played?</h3>
-      <p className="text-center">
-        Create your personalized list from thousands of titles from the
-        IGDB database.
-      </p>
+          <h1 className="display-3 text-center mt-5 mb-3">
+            What Have You Played?
+          </h1>
+          <p className="text-center">
+            Create your personalized list from thousands of titles from the IGDB
+            database.
+          </p>
         </div>
-      <form className="d-flex justify-content-center my-5" onSubmit={(e) => handleSearch(e)}>
-        <input
-          onChange={(e) => {
-            setSearchValue(e.target.value);
-            console.log(searchValue);
-          }}
-          value={searchValue}
-          required
-        />
-        <button className="btn btn-secondary home__search-button" type="submit">
-          Search
-        </button>
-      </form>
-      <ul className="home__search-results d-sm-flex flex-sm-wrap justify-content-sm-around mx-auto">
-        {searchResults.map((result) => (
-          <li key={result.id}>
-            <Card className="mb-5 mx-auto" style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={result.url} />
-              <Card.Body>
-                <Card.Title>{result.name}</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button
-                  onClick={addGameStart}
-                  id={result.name}
-                  variant="secondary"
-                >
-                  Add game
-                </Button>
-              </Card.Body>
-            </Card>
-          </li>
-        ))}
-      </ul>
+        <form
+          className="d-flex justify-content-center my-5"
+          onSubmit={(e) => handleSearch(e)}
+        >
+          <input
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              console.log(searchValue);
+            }}
+            value={searchValue}
+            required
+          />
+          <button
+            className="btn btn-secondary home__search-button"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
+        <ul className="home__search-results d-sm-flex flex-sm-wrap justify-content-sm-around mx-auto">
+          {searchResults.map((result) => (
+            <li key={result.id}>
+              <Card className="mb-5 mx-auto" style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={result.url} />
+                <Card.Body>
+                  <Card.Title>{result.name}</Card.Title>
+                  {/* <Card.Text>
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </Card.Text> */}
+                  <Button
+                    onClick={addGameStart}
+                    id={result.name}
+                    variant="secondary"
+                  >
+                    Add game
+                  </Button>
+                </Card.Body>
+              </Card>
+            </li>
+          ))}
+        </ul>
 
-      <>
-        <Modal className="mt-5" show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add game</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form
-              onSubmit={(e) => {
-                addGameFinish(e);
-              }}
-            >
-              <Form.Select
-                onChange={(e) => {
-                  setRanking(e.target.value);
+        <>
+          <Modal className="mt-5" show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add game</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <form
+                onSubmit={(e) => {
+                  addGameFinish(e);
                 }}
-                aria-label="Default select example"
               >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </Form.Select>
-              <Button variant="primary" type="submit">
-                Save
+                <Form.Select
+                  onChange={(e) => {
+                    setRanking(e.target.value);
+                  }}
+                  aria-label="Default select example"
+                >
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </Form.Select>
+                <Button variant="primary" type="submit">
+                  Save
+                </Button>
+              </form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
               </Button>
-            </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    </div>
+            </Modal.Footer>
+          </Modal>
+        </>
       </div>
+    </div>
   );
 };
 

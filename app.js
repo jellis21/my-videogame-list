@@ -14,8 +14,8 @@ const searchRouter = require("./routes/search");
 const socialRouter = require("./routes/social");
 
 const app = express();
-const hostname = process.env.HOSTNAME;
-const port = process.env.PORT;
+const hostname = process.env.HOSTNAME || "127.0.0.1";
+const port = process.env.PORT || "3001";
 const server = http.createServer(app);
 
 /* Middleware */

@@ -32,7 +32,9 @@ const Register = () => {
         users, create your own profile, and plenty more.
       </p>
       </div>
-      <div className="register-form d-flex flex-column align-items-center">
+      <div className="login-form__wrapper">
+
+      <div className="login-form register-form d-flex flex-column align-items-center">
       <h1>Sign up with email:</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <p>
@@ -71,6 +73,7 @@ const Register = () => {
         <button className="btn btn-secondary" type="submit">Register</button>
         <img src="../charizard.gif" alt="charizard blasting the register button" style={{height: "57px", width: "125px"}} />
       </form>
+      </div>
       </div>
     </div>
   );

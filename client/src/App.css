@@ -29,7 +29,6 @@ main {
   background-color: #102039;
   color: white;
   padding: 10px 0 10px 0;
-  /* margin-top: 100px; */
 }
 .home__header--line {
   background-color: #ffffff4d;
@@ -50,6 +49,16 @@ main {
   padding: 0;
   max-width: 960px;
 }
+.home__featured-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.home__featured-item {
+  background-color: blue;
+  border: 1px solid red;
+  height: 300px;
+}
+
 /* NavBar.jsx */
 .navbar {
   background-color: #102039;
@@ -113,7 +122,7 @@ main {
   color: lightgray;
 }
 
-/* Login */
+/* Login & Register */
 .login-form {
   border: 1px solid #102039;
   height: 100%;
@@ -122,8 +131,9 @@ main {
 }
 .login-form__wrapper {
   border: 11px solid #e1e7f5;
-  height: 600px;
+  height: 500px;
   margin: 50px auto 0 auto;
   max-width: 500px;
   width: 80%;
 }
+

@@ -30,11 +30,11 @@ function NavBar() {
 
 <Navbar fixed="top" variant="dark" expand="md">
   <Container>
-    <Navbar.Brand href="#home">My Videogame List</Navbar.Brand>
+    <Navbar.Brand href="#home">MyVideoGameList</Navbar.Brand>
     { isLoggedIn ? <Navbar.Text> Hi, {user} </Navbar.Text> : <Navbar.Text></Navbar.Text>}
     
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
+    <Navbar.Toggle aria-controls="basic-navbar-nav" /> 
+    <Navbar.Collapse id="basic-navbar-nav"> 
       <Nav className="me-auto">
       <Link className='nav-margin nav-color ms-md-3' to="/">Home</Link>
           { isLoggedIn ? (
