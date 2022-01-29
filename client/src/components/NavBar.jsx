@@ -40,6 +40,7 @@ function NavBar() {
           { isLoggedIn ? (
             <>
             <Link className='nav-margin nav-color' to="/lists">My List</Link>
+            <Link className='nav-margin nav-color' to="/social">Social</Link>
             <button className="nav-button nav-color" href="#" onClick={() => handleLogout()}>Log Out</button>
             </>
           ) : (

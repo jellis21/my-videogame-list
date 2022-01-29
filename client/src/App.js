@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import Lists from './pages/Lists';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Social from './pages/Social';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/lists" element={<Lists />} />
+        <Route path="/social" element={<Social />} />
       </Routes>
       </main>
       <Footer />
