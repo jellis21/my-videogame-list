@@ -54,9 +54,10 @@ main {
   margin: 0 auto;
 }
 .home__featured-item {
-  background-color: blue;
-  border: 1px solid red;
+  background-color: #e1e7f5;
+  border: 1px solid #102039;
   height: 300px;
+  margin: 0 1rem 2rem 1rem;
 }
 
 /* NavBar.jsx */
@@ -137,3 +138,107 @@ main {
   width: 80%;
 }
 
+/* Custom Media Queries */
+/* Featured items medium breakpoint */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .home__featured-item__container {
+    display: flex;
+  }
+  .home__featured-item {
+    background-color: #e1e7f5;
+    border: 1px solid #102039;
+    /* height: 300px; */
+    margin: 0 1rem 1rem 0rem;
+  }
+  #home__featured-item__1,
+  #home__featured-item__4,
+  #home__featured-item__5 {
+    margin-left: 1rem;
+  }
+  #home__featured-item__1,
+  #home__featured-item__2,
+  #home__featured-item__3 {
+    height: 150px;
+    width: 33%;
+  }
+  #home__featured-item__4 {
+    height: 500px;
+    width: 100%;
+  }
+  #home__featured-item__5,
+  #home__featured-item__6 {
+    height: 250px;
+    width: 50%;
+  }
+}
+
+/* Featured items large breakpoint */
+@media only screen and (min-width: 960px) {
+  .home__featured-item__container {
+    display: flex;
+  }
+  .home__featured-item {
+    background-color: #e1e7f5;
+    border: 1px solid #102039;
+    margin: 0 1rem 1rem 0rem;
+  }
+  #home__featured-item__1,
+  #home__featured-item__4,
+  #home__featured-item__5 {
+    margin-left: 1rem;
+  }
+  #home__featured-item__1,
+  #home__featured-item__2,
+  #home__featured-item__3 {
+    height: 150px;
+    width: 33%;
+  }
+  #home__featured-item__4 {
+    height: 416px;
+    width: 100%;
+  }
+  #home__featured-item__5,
+  #home__featured-item__6 {
+    height: 250px;
+    width: 50%;
+  }
+
+
+
+  .home__featured-item__container {
+    display: flex;
+  }
+  .home__featured-item {
+    background-color: #e1e7f5;
+    border: 1px solid #102039;
+    /* height: 300px; */
+    margin: 0 1rem 1rem 0rem;
+  }
+  .c12 {
+    display: flex;
+  }
+  #home__featured-item__container-2 {
+    height: 400px;
+    width: 67.20%;
+  }
+  #home__featured-item__4 {
+    margin-bottom: 1rem;
+  }
+  #home__featured-item__1,
+  #home__featured-item__2,
+  #home__featured-item__3,
+  #home__featured-item__5,
+  #home__featured-item__6 {
+  height: 200px;
+  }
+  #home__featured-item__container-3 {
+    display: flex;
+    flex-direction: column;
+    width: 31.10%;
+  }
+  #home__featured-item__5,
+  #home__featured-item__6 {
+    margin: 0 0 1rem 0;
+    width: 100%;
+  }
+}

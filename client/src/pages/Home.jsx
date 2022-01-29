@@ -121,6 +121,24 @@ const Home = () => {
           ))}
         </ul>
 
+        <h3>Featured</h3>
+        <div className="home__featured-container">
+          <div className="home__featured-item__container" id="home__featured-item__container-1">
+            <div className="home__featured-item" id="home__featured-item__1"><h1>1</h1></div>
+            <div className="home__featured-item" id="home__featured-item__2"><h1>2</h1></div>
+            <div className="home__featured-item" id="home__featured-item__3"><h1>3</h1></div>
+        </div>
+        <div className="c12">
+          <div className="home__featured-item__container" id="home__featured-item__container-2">
+            <div className="home__featured-item" id="home__featured-item__4"><h1>4</h1></div>
+          </div>
+          <div className="home__featured-item__container" id="home__featured-item__container-3">
+            <div className="home__featured-item" id="home__featured-item__5"><h1>5</h1></div>
+            <div className="home__featured-item" id="home__featured-item__6"><h1>6</h1></div>
+          </div>
+        </div>
+        </div>
+
         <>
           <Modal className="mt-5" show={show} onHide={handleClose}>
             <Modal.Header closeButton>
