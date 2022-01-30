@@ -27,7 +27,11 @@ const Home = () => {
     axios
       .post("/api/v1/search", { searchValue })
       .then((res) => {
-        console.log(res.data);
+        if (res.data.length === 0) {
+          alert("No games found. Please try again.");
+          return
+        }
+        console.log(res.data)
         setSearchResults(res.data);
       })
       .catch((err) => {
@@ -43,7 +47,6 @@ const Home = () => {
     }
     handleShow();
     setGameName(e.target.id);
-    console.log(gameName);
   };
   // Add game to db pt. 2
   const addGameFinish = (e) => {
@@ -58,7 +61,7 @@ const Home = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        console.log(res.status)
       })
       .catch((err) => alert(err.response.data.error));
     e.target.innerText = "Success!";
@@ -73,7 +76,6 @@ const Home = () => {
     searchResultsCopy.shift()
     searchResultsCopy.push(next)
     setSearchResults(searchResultsCopy)
-    console.log(searchResultsCopy)
   }
   const moveBackward = () => {
     const searchResultsCopy = [...searchResults]
@@ -81,7 +83,6 @@ const Home = () => {
     searchResultsCopy.pop()
     searchResultsCopy.unshift(previous)
     setSearchResults(searchResultsCopy)
-    console.log(searchResultsCopy)
   }
 
   return (
@@ -106,7 +107,6 @@ const Home = () => {
           <input
             onChange={(e) => {
               setSearchValue(e.target.value);
-              console.log(searchValue);
             }}
             value={searchValue}
             required
@@ -118,13 +118,13 @@ const Home = () => {
             Search
           </button>
         </form>
-        <button onClick={moveBackward}>previous</button>
-        <button onClick={moveForward}>Next</button>
-        <ul className="home__search-results d-flex mx-auto"> {/* d-sm-flex flex-sm-wrap justify-content-sm-around */}
+        <ul className="home__search-results d-flex mx-auto"> 
+        <button className="carousel-control-prev-icon btn btn-secondary" id="search-button-previous" onClick={moveBackward}></button>
+        <button className="carousel-control-next-icon btn btn-secondary" id="search-button-next" onClick={moveForward}></button>
           {searchResults.map((result) => (
             /* React-Bootstrap card, tooltip, & button components */
             <li className="search-result-li" key={result.id}>
-              <Card className="mb-5 mx-auto" style={{ width: "12rem" }}>
+              <Card className="mb-4 me-3" style={{ width: "10rem" }}>
                 <Card.Img variant="top" src={result.url} />
                 <Card.Body>
                   <OverlayTrigger

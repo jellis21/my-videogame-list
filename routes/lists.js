@@ -53,7 +53,7 @@ router.post("/", checkAuth, (req, res) => {
     UserId: req.user.id,
   }).then((game) => {
     // respond to client with new game
-    res.status(201).json(game);
+    res.status(201).json( {message: "added game successfully" });
   });
 });
 

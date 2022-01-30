@@ -13,10 +13,10 @@ router.post("/", (req, res) => {
 
   const dataWithImage = (data) => {
     const newData = data.map((item) => {return item.id});
-    console.log(newData)
+    // console.log(newData)
     fetch("https://api.igdb.com/v4/covers", {
     method: "post",
-    body: `fields url; where game = (${newData});`,
+    body: `fields url, game; where game = (${newData});`,
     headers: {
       "Client-ID": process.env.CLIENT_ID,
       Authorization: process.env.AUTHORIZATION,
@@ -24,9 +24,14 @@ router.post("/", (req, res) => {
   })
     .then((response) => response.json())
     .then((finalData) => {
-      
+      // Add url to data when data.id matches finalData.game
+      // "game" is one of the data points returned in 2nd fetch request
       for (let i = 0; i < data.length; i++) {
-        data[i].url = finalData[i].url
+        for (let j = 0; j < finalData.length; j++) {
+          if (data[i].id === finalData[j].game) {
+            data[i].url = finalData[j].url;
+          }
+        }
       }
       res.send(data)
     });
@@ -42,9 +47,6 @@ router.post("/", (req, res) => {
   })
     .then((response) => response.json())
     .then((data) => dataWithImage(data));
-    // .then((data) => res.send(data))
-
-  // res.send("search");
 });
 
 module.exports = router;
