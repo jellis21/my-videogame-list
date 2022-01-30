@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   // get a piece of state
-  // const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -12,7 +11,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/v1/users/login", { username, password }) // axios retursn the "data" key we're accessing
+      .post("/api/v1/users/login", { username, password }) // axios returns the "data" key we're accessing
       .then((res) => {
         window.localStorage.setItem("token", res.data.token);
         window.localStorage.setItem("username", username);

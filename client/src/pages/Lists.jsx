@@ -32,7 +32,7 @@ function Lists() {
       });
   }, [token]);
 
-  /* edit & delete game helper functions */
+  // edit & delete game helper functions
   const editGame = (e) => {
     e.preventDefault();
     setId(e.target.id)
@@ -85,15 +85,15 @@ function Lists() {
       <h1 className="display-3 mt-5 pt-3 text-center">My List</h1>
       </div>
       {lists && lists.length === 0 && (
-        <Figure className="d-flex flex-column justify-content-center align-items-center list-figure">
+        <Figure className="d-flex flex-column justify-content-center align-items-center list-figure mx-4">
         <Figure.Image
-          width={200}
-          height={200}
+          width={500}
+          height={500}
           alt="game over"
           src="../game-over.jpg"
         />
         <Figure.Caption>
-          <button onClick={goHome} className="btn btn-primary">Add some games!</button>
+          <button onClick={goHome} className="btn btn-secondary">Add some games!</button>
         </Figure.Caption>
       </Figure>
       )}

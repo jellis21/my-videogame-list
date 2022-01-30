@@ -8,21 +8,11 @@ const checkAuth = require("../checkAuth");
 
 /* POST /api/v1/users/register */
 router.post("/register", function (req, res, next) {
-  // If fields are missing
+  // If fields are missing, send an error back
   if (!req.body.username || !req.body.email || !req.body.password) {
-    // then send an error back
     res.status(400).json({ error: "please include all required fields" });
     return;
   }
-
-  // check if email in use
-  // models.User.findAll({ where: { email: req.body.email }
-  // }).then((users) => {
-  // if yes, send error
-  // if (users.length > 0) {
-  //   res.status(400).json({ error: "email already in use" });
-  //   return;
-  // }
 
   const checkCredentials = async () => {
     // check if username or email is in use
@@ -56,33 +46,28 @@ router.post("/register", function (req, res, next) {
   };
   checkCredentials();
 });
-// });
 
 /* POST /api/v1/users/login */
 router.post("/login", (req, res, next) => {
   // check for required fields
   if (!req.body.username || !req.body.password) {
-    // then send an error back
     res.status(400).json({ error: "please include all required fields" });
     return;
   }
   // check for user with username
   models.User.findOne({ where: { username: req.body.username } }).then((user) => {
-    // if no user, send error
     if (!user) {
       res.status(404).json({ error: "could not find the username" });
       return;
     }
     // check password against hash in db
     bcrypt.compare(req.body.password, user.password).then((match) => {
-      // if no match, send error
       if (!match) {
         res.status(400).json({ error: "password incorrect" });
         return;
       }
       // log the user in with JSON web token
       const token = jwt.sign(user.get({ plain: true }), process.env.JWT_SECRET)
-      // send success response
       res.json({ success: "logged in", token });
     });
   });

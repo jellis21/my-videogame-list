@@ -31,7 +31,6 @@ const Home = () => {
           alert("No games found. Please try again.");
           return
         }
-        console.log(res.data)
         setSearchResults(res.data);
       })
       .catch((err) => {
@@ -69,7 +68,7 @@ const Home = () => {
   };
 
   
-/* Sort through searchResults */
+// Sort through searchResults
   const moveForward = () => {
     const searchResultsCopy = [...searchResults]
     const next = searchResultsCopy[0]
@@ -89,7 +88,6 @@ const Home = () => {
     <div>
       <div className="">
         {" "}
-        {/* mx-2 */}
         <div className="home__header">
           <div className="home__header--line"> </div>
           <h1 className="display-3 text-center mt-5 mb-3">
@@ -109,13 +107,14 @@ const Home = () => {
               setSearchValue(e.target.value);
             }}
             value={searchValue}
+            placeholder="Search"
             required
           />
           <button
             className="btn btn-secondary home__search-button"
             type="submit"
           >
-            Search
+            <i className="bi bi-search"></i>
           </button>
         </form>
         <ul className="home__search-results d-flex mx-auto"> 
@@ -277,7 +276,7 @@ const Home = () => {
                   <option value="9">9</option>
                   <option value="10">10</option>
                 </Form.Select>
-                <Button variant="primary" type="submit">
+                <Button className="btn-secondary mt-3" variant="primary" type="submit">
                   Save
                 </Button>
               </form>

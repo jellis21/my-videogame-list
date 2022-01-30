@@ -20,8 +20,6 @@ function Social() {
           },
         })
         .then((res) => {
-          // setSearchResults(res.data);
-          // console.log(res.data.id.toString())
           axios({
             method: "POST",
             url: "/api/v1/social",
@@ -54,10 +52,11 @@ function Social() {
             setSearchValue(e.target.value);
           }}
           value={searchValue}
+          placeholder="Find your friends' lists"
           required
         />
         <button className="btn btn-secondary home__search-button" type="submit">
-          Search
+          <i className="bi bi-search"></i>
         </button>
       </form>
 

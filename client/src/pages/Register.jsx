@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  // get a piece of state
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -71,7 +70,6 @@ const Register = () => {
           />
         </p>
         <button className="btn btn-secondary" type="submit">Register</button>
-        <img src="../charizard.gif" alt="charizard blasting the register button" style={{height: "57px", width: "125px"}} />
       </form>
       </div>
       </div>

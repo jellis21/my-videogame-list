@@ -13,7 +13,6 @@ router.post("/", (req, res) => {
 
   const dataWithImage = (data) => {
     const newData = data.map((item) => {return item.id});
-    // console.log(newData)
     fetch("https://api.igdb.com/v4/covers", {
     method: "post",
     body: `fields url, game; where game = (${newData});`,
