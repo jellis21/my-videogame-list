@@ -104,10 +104,6 @@ const Home = () => {
                 <Card.Img variant="top" src={result.url} />
                 <Card.Body>
                   <Card.Title>{result.name}</Card.Title>
-                  {/* <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </Card.Text> */}
                   <Button
                     onClick={addGameStart}
                     id={result.name}
@@ -120,25 +116,92 @@ const Home = () => {
             </li>
           ))}
         </ul>
-
-        <h3>Featured</h3>
+        <h3 className="home__featured">Featured</h3>
         <div className="home__featured-container">
-          <div className="home__featured-item__container" id="home__featured-item__container-1">
-            <div className="home__featured-item" id="home__featured-item__1"><h1>1</h1></div>
-            <div className="home__featured-item" id="home__featured-item__2"><h1>2</h1></div>
-            <div className="home__featured-item" id="home__featured-item__3"><h1>3</h1></div>
-        </div>
-        <div className="c12">
-          <div className="home__featured-item__container" id="home__featured-item__container-2">
-            <div className="home__featured-item" id="home__featured-item__4"><h1>4</h1></div>
+          <div
+            className="home__featured-item__container"
+            id="home__featured-item__container-1"
+          >
+            <div className="home__featured-item" id="home__featured-item__1">
+              <h4 className="home__featured-item__content__top">
+                <a
+                  href="https://www.ign.com/articles/marvels-spider-man-miles-morales-ps5-review"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Spider-Man: Miles Morales
+                </a>
+              </h4>
+            </div>
+            <div className="home__featured-item" id="home__featured-item__2">
+              <h4 className="home__featured-item__content__top">
+                <a
+                  href="https://www.ign.com/articles/tales-of-arise-review"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Tales of Arise
+                </a>
+              </h4>
+            </div>
+            <div className="home__featured-item" id="home__featured-item__3">
+              <h4 className="home__featured-item__content__top">
+                <a
+                  href="https://www.ign.com/articles/2019/11/15/star-wars-jedi-fallen-order-review"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Star Wars Jedi: Fallen Order
+                </a>
+              </h4>
+            </div>
           </div>
-          <div className="home__featured-item__container" id="home__featured-item__container-3">
-            <div className="home__featured-item" id="home__featured-item__5"><h1>5</h1></div>
-            <div className="home__featured-item" id="home__featured-item__6"><h1>6</h1></div>
+          <div className="home__featured-container__inner">
+            <div
+              className="home__featured-item__container"
+              id="home__featured-item__container-2"
+            >
+              <div className="home__featured-item" id="home__featured-item__4">
+                <h4 className="home__featured-item__content__middle">
+                  <a
+                    href="https://www.ign.com/articles/persona-5-royal-review"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Personal 5 Royal
+                  </a>
+                </h4>
+              </div>
+            </div>
+            <div
+              className="home__featured-item__container"
+              id="home__featured-item__container-3"
+            >
+              <div className="home__featured-item" id="home__featured-item__5">
+                <h4 className="home__featured-item__content__bottom">
+                  <a
+                    href="https://www.ign.com/articles/destiny-2-beyond-light-review"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Destiny 2: Beyond Light
+                  </a>
+                </h4>
+              </div>
+              <div className="home__featured-item" id="home__featured-item__6">
+                <h4 className="home__featured-item__content__bottom">
+                  <a
+                    href="https://www.ign.com/articles/2019/09/19/the-legend-of-zelda-links-awakening-review"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    The Legend of Zelda: Link's Awakening
+                  </a>
+                </h4>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-
         <>
           <Modal className="mt-5" show={show} onHide={handleClose}>
             <Modal.Header closeButton>
