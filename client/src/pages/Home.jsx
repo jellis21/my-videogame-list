@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -63,6 +65,18 @@ const Home = () => {
     e.target.className = "bg-success text-light";
   };
 
+  
+
+  const moveForward = () => {
+    const searchResultsCopy = Object.assign( searchResults, {
+      ...searchResults
+    })
+    searchResultsCopy.push(searchResultsCopy[0])
+    searchResultsCopy.shift()
+    setSearchResults(searchResultsCopy)
+    console.log(searchResultsCopy)
+  }
+
   return (
     <div>
       <div className="">
@@ -97,13 +111,35 @@ const Home = () => {
             Search
           </button>
         </form>
-        <ul className="home__search-results d-sm-flex flex-sm-wrap justify-content-sm-around mx-auto">
+        <button onClick={moveForward}>Next</button>
+        <ul className="home__search-results d-flex mx-auto"> {/* d-sm-flex flex-sm-wrap justify-content-sm-around */}
           {searchResults.map((result) => (
-            <li key={result.id}>
-              <Card className="mb-5 mx-auto" style={{ width: "18rem" }}>
+            /* React-Bootstrap card, tooltip, & button components */
+            <li className="search-result-li" key={result.id}>
+              <Card className="mb-5 mx-auto" style={{ width: "12rem" }}>
                 <Card.Img variant="top" src={result.url} />
                 <Card.Body>
-                  <Card.Title>{result.name}</Card.Title>
+                  <OverlayTrigger
+                    key={result.id}
+                    placement="top"
+                    overlay={
+                      <Tooltip id={`tooltip-${result.id}`}>
+                        {result.name}
+                      </Tooltip>
+                    }
+                  >
+                    <Card.Title
+                      style={{
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        width: "100%",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {result.name}
+                    </Card.Title>
+                  </OverlayTrigger>
+
                   <Button
                     onClick={addGameStart}
                     id={result.name}
@@ -114,7 +150,9 @@ const Home = () => {
                 </Card.Body>
               </Card>
             </li>
-          ))}
+          ))
+          }
+          
         </ul>
         <h3 className="home__featured">Featured</h3>
         <div className="home__featured-container">
