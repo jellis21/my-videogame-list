@@ -66,13 +66,20 @@ const Home = () => {
   };
 
   
-
+/* Sort through searchResults */
   const moveForward = () => {
-    const searchResultsCopy = Object.assign( searchResults, {
-      ...searchResults
-    })
-    searchResultsCopy.push(searchResultsCopy[0])
+    const searchResultsCopy = [...searchResults]
+    const next = searchResultsCopy[0]
     searchResultsCopy.shift()
+    searchResultsCopy.push(next)
+    setSearchResults(searchResultsCopy)
+    console.log(searchResultsCopy)
+  }
+  const moveBackward = () => {
+    const searchResultsCopy = [...searchResults]
+    const previous = searchResultsCopy[searchResultsCopy.length - 1]
+    searchResultsCopy.pop()
+    searchResultsCopy.unshift(previous)
     setSearchResults(searchResultsCopy)
     console.log(searchResultsCopy)
   }
@@ -111,6 +118,7 @@ const Home = () => {
             Search
           </button>
         </form>
+        <button onClick={moveBackward}>previous</button>
         <button onClick={moveForward}>Next</button>
         <ul className="home__search-results d-flex mx-auto"> {/* d-sm-flex flex-sm-wrap justify-content-sm-around */}
           {searchResults.map((result) => (
