@@ -39,6 +39,25 @@ router.delete("/:id", checkAuth, (req, res) => {
   });
 });
 
+// UPDATE /api/v1/lists/update
+router.post("/:id", checkAuth, (req, res) => {
+  // try and remove team with id, so long as it is owned by the logged in user
+  models.List.update(req.body, {
+    where: {
+      id: req.params.id,
+      UserId: req.user.id
+    },
+  }).then(() => {
+    models.List.findAll({ where: { UserId: req.user.id } }).then((games) => {
+      if (games.length === 0) {
+        res.status(400).json({ error: "there are no games in your list" });
+        return;
+      }
+      res.json(games);
+    });
+  });
+});
+
 // POST /api/v1/lists/
 router.post("/", checkAuth, (req, res) => {
   // check for required fields
