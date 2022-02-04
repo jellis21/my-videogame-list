@@ -54,5 +54,5 @@ app.get('*', (req,res)=> {
 })
 
 server.listen(port, hostname, () => {
-  console.log(`Server running`);
+  console.log(`Server running on ${hostname}: ${port}`);
 });
