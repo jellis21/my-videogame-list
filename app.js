@@ -16,7 +16,7 @@ const socialRouter = require("./routes/social");
 const app = express();
 const hostname = process.env.HOSTNAME || "127.0.0.1";
 const port = process.env.PORT || "3001";
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
 /* Middleware */
 app.use(logger('dev'));
@@ -53,6 +53,6 @@ app.get('*', (req,res)=> {
   res.sendFile(path.join(__dirname, 'client/build/index.html'))
 })
 
-server.listen(port, hostname, () => {
-  console.log(`Server running on ${hostname}: ${port}`);
+app.listen(port, () => {
+  console.log(`Server running on ${port}`);
 });
